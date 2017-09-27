@@ -1,2 +1,3 @@
 # BusLines Blumenau
-Uma API Rest que disponibiliza informações sobre todas as linhas de ônibus de Blumenau
+API com informações sobre todas as linhas de ônibus da cidade Blumenau - SC
+[![License](http://img.shields.io/:license-mit-blue.svg)](https://github.com/vmarcosp/buslines-blumenau/blob/master/LICENSE)
