@@ -32,22 +32,9 @@ var LineController = function () {
 	_createClass(LineController, [{
 		key: 'getAll',
 		value: function getAll(request, response) {
-			var lines;
-			return regeneratorRuntime.async(function getAll$(_context) {
-				while (1) {
-					switch (_context.prev = _context.next) {
-						case 0:
-							lines = this._repository.findAll();
-
-							response.json(lines);
-							response.status(_httpStatus2.default.OK);
-
-						case 3:
-						case 'end':
-							return _context.stop();
-					}
-				}
-			}, null, this);
+			var lines = this._repository.findAll();
+			response.json(lines);
+			response.status(_httpStatus2.default.OK);
 		}
 	}]);
 
