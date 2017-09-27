@@ -38,13 +38,29 @@ var LinesSpider = function () {
 
 	_createClass(LinesSpider, [{
 		key: 'execute',
-		value: async function execute() {
-			console.log('exec...');
-			this._dom = await this._spider.executeCrawler();
-			this._document = this._dom.window.document;
-			this.findPages();
-			this.getLinesOfPage();
-			this.getAnotherLines();
+		value: function execute() {
+			return regeneratorRuntime.async(function execute$(_context) {
+				while (1) {
+					switch (_context.prev = _context.next) {
+						case 0:
+							console.log('exec...');
+							_context.next = 3;
+							return regeneratorRuntime.awrap(this._spider.executeCrawler());
+
+						case 3:
+							this._dom = _context.sent;
+
+							this._document = this._dom.window.document;
+							this.findPages();
+							this.getLinesOfPage();
+							this.getAnotherLines();
+
+						case 8:
+						case 'end':
+							return _context.stop();
+					}
+				}
+			}, null, this);
 		}
 	}, {
 		key: 'findPages',
@@ -56,15 +72,39 @@ var LinesSpider = function () {
 		}
 	}, {
 		key: 'getAnotherLines',
-		value: async function getAnotherLines() {
+		value: function getAnotherLines() {
 			var _this = this;
 
-			this._pages.forEach(async function (page) {
-				var spider = new _Spider2.default(page);
-				spider.executeCrawler().then(function (dom) {
-					_this.getLinesOfPage(dom.window.document);
-				});
-			});
+			return regeneratorRuntime.async(function getAnotherLines$(_context3) {
+				while (1) {
+					switch (_context3.prev = _context3.next) {
+						case 0:
+							this._pages.forEach(function _callee(page) {
+								var spider;
+								return regeneratorRuntime.async(function _callee$(_context2) {
+									while (1) {
+										switch (_context2.prev = _context2.next) {
+											case 0:
+												spider = new _Spider2.default(page);
+
+												spider.executeCrawler().then(function (dom) {
+													_this.getLinesOfPage(dom.window.document);
+												});
+
+											case 2:
+											case 'end':
+												return _context2.stop();
+										}
+									}
+								}, null, _this);
+							});
+
+						case 1:
+						case 'end':
+							return _context3.stop();
+					}
+				}
+			}, null, this);
 		}
 	}, {
 		key: 'getLinesOfPage',

@@ -26,14 +26,33 @@ var Spider = function () {
 
 	_createClass(Spider, [{
 		key: 'executeCrawler',
-		value: async function executeCrawler() {
-			try {
-				var dom = await _jsdom.JSDOM.fromURL(this._url, { features: features });
-				return dom;
-			} catch (err) {
-				//TODO: Implement a better logger
-				console.error('Error in crawler at the page ' + this._url + ' : Error - ' + err);
-			}
+		value: function executeCrawler() {
+			var dom;
+			return regeneratorRuntime.async(function executeCrawler$(_context) {
+				while (1) {
+					switch (_context.prev = _context.next) {
+						case 0:
+							_context.prev = 0;
+							_context.next = 3;
+							return regeneratorRuntime.awrap(_jsdom.JSDOM.fromURL(this._url, { features: features }));
+
+						case 3:
+							dom = _context.sent;
+							return _context.abrupt('return', dom);
+
+						case 7:
+							_context.prev = 7;
+							_context.t0 = _context['catch'](0);
+
+							//TODO: Implement a better logger
+							console.error('Error in crawler at the page ' + this._url + ' : Error - ' + _context.t0);
+
+						case 10:
+						case 'end':
+							return _context.stop();
+					}
+				}
+			}, null, this, [[0, 7]]);
 		}
 	}]);
 
