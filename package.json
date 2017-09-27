@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "nodemon --exec babel-node src/index.js",
     "build": "babel src/ -d dist --presets es2015",
-    "babel-dev": "babel-node src/index.js"
+    "babel-dev": "babel-node src/index.js",
+    "babel-db": "babel-node src/load-db.js"
   },
   "keywords": [
     "seterb",
@@ -27,6 +28,7 @@
   "devDependencies": {
     "babel-cli": "^6.26.0",
     "babel-preset-es2015": "^6.24.1",
+    "http-status": "^1.0.1",
     "nodemon": "^1.12.0"
   }
 }

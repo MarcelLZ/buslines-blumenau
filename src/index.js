@@ -1,2 +1,3 @@
-import LinesSpider from './services/LinesSpider';
-new LinesSpider().execute();
+import app from './app';
+
+app.listen(app.get('PORT'), () => console.log('Iniciado'));

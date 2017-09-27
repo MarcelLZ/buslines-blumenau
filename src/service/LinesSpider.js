@@ -16,6 +16,7 @@ export default class LinesSpider {
 	}
 
 	async execute() {
+		console.log('exec...');
 		this._dom = await this._spider.executeCrawler();
 		this._document = this._dom.window.document;
 		this.findPages();
