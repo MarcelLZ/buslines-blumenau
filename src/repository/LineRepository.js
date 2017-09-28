@@ -1,23 +1,22 @@
-import db from '../db';
+import LineSchema from '../schema/LineSchema';
 
 export default class LineRepository {
 
 	constructor() {
-		this._collection = db.getCollection('lines');
+		this._collection = LineSchema;
 	}
 
 	/**
 	 * 
-	 * @param {Array<Line>|Line} data 
+	 * @param {Array<Line>|Line} lines 
 	 */
-	save(data) {
-		this._collection.insert(data);
-		db.saveDatabase();
+	async save(lines) {
+		await this._collection.insertMany(lines);
 	}
 
-	findAll() {
-		this._collection = db.getCollection('lines');
-		return this._collection.find().map(line => ( {name:line.name,number:line.number} ));
+	async findAll() {
+		let lines = await this._collection.find();
+		return lines;
 	}
 
 }

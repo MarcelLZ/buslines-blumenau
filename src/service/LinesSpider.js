@@ -16,12 +16,12 @@ export default class LinesSpider {
 	}
 
 	async execute() {
-		console.log('exec...');
 		this._dom = await this._spider.executeCrawler();
 		this._document = this._dom.window.document;
 		this.findPages();
 		this.getLinesOfPage();
 		this.getAnotherLines();
+		console.log('Finished');
 	}
 
 	findPages() {
@@ -54,14 +54,14 @@ export default class LinesSpider {
 	 * 
 	 * @param {Array<Object>} htmlLines 
 	 */
-	saveLines(htmlLines) {
+	async saveLines(htmlLines) {
 		const lines = Array.from(htmlLines).map(line => {
 			let number = line.querySelector(LINE_NUMBER_SELECTOR).innerHTML;
 			let name = line.querySelector(LINE_TITLE_SELECTOR).innerHTML;
 			
 			return new Line(name, number, line.href);
 		});
-		this._repository.save(lines);
+		await this._repository.save(lines);
 	}
 
 }

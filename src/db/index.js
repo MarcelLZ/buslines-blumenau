@@ -1,10 +1,16 @@
-import Loki from 'lokijs';
-const db = new Loki('./database.json', {
-	autoload: true
-	// autosave: true,
-	// autosaveInterval: 10000
+import mongoose from 'mongoose';
+import bluebird from 'bluebird';
+
+mongoose.connect('mongodb://localhost/buslines', {
+	useMongoClient: true,
+	promiseLibrary: bluebird
 });
 
-db.addCollection('lines');
+mongoose.Promise = bluebird;
 
-export default db;
+const db = mongoose.connection;
+
+db.on('error', () => console.log('Erro ao tentar conectar ao mongodb.'));
+db.once('open', () => console.log('Conectado ao mongodb'));
+
+export default mongoose;
