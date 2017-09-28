@@ -12,11 +12,11 @@ const _connection = (variables) => {
 		database = variables.MONGO_DATABASE || config.mongo.database,
 		auth = username ? `${username}:${password}@` : '';
 
-	return `mongodb://${auth}${host}:${port}/${database};`
+	return `mongodb://${auth}${host}:${port}/${database}`;
 };
-
 const _urlConnection = _connection(process.env);
 
+console.log(_urlConnection);
 mongoose.connect(_urlConnection, {
 	useMongoClient: true,
 	promiseLibrary: bluebird

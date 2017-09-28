@@ -28,11 +28,11 @@ var _connection = function _connection(variables) {
 	    database = variables.MONGO_DATABASE || _config2.default.mongo.database,
 	    auth = username ? username + ':' + password + '@' : '';
 
-	return 'mongodb://' + auth + host + ':' + port + '/' + database + ';';
+	return 'mongodb://' + auth + host + ':' + port + '/' + database;
 };
-
 var _urlConnection = _connection(process.env);
 
+console.log(_urlConnection);
 _mongoose2.default.connect(_urlConnection, {
 	useMongoClient: true,
 	promiseLibrary: _bluebird2.default
