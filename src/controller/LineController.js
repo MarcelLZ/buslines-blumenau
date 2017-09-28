@@ -9,6 +9,7 @@ export default class LineController {
 	}
 
 	async getAll(request, response) {
+
 		let lines = await this._repository.findAll();
 		response.json(lines);
 		response.status(HttpStatus.OK);
