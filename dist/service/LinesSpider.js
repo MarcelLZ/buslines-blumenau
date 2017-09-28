@@ -43,17 +43,17 @@ var LinesSpider = function () {
 				while (1) {
 					switch (_context.prev = _context.next) {
 						case 0:
-							console.log('exec...');
-							_context.next = 3;
+							_context.next = 2;
 							return regeneratorRuntime.awrap(this._spider.executeCrawler());
 
-						case 3:
+						case 2:
 							this._dom = _context.sent;
 
 							this._document = this._dom.window.document;
 							this.findPages();
 							this.getLinesOfPage();
 							this.getAnotherLines();
+							console.log('Finished');
 
 						case 8:
 						case 'end':
@@ -124,13 +124,26 @@ var LinesSpider = function () {
 	}, {
 		key: 'saveLines',
 		value: function saveLines(htmlLines) {
-			var lines = Array.from(htmlLines).map(function (line) {
-				var number = line.querySelector(LINE_NUMBER_SELECTOR).innerHTML;
-				var name = line.querySelector(LINE_TITLE_SELECTOR).innerHTML;
+			var lines;
+			return regeneratorRuntime.async(function saveLines$(_context4) {
+				while (1) {
+					switch (_context4.prev = _context4.next) {
+						case 0:
+							lines = Array.from(htmlLines).map(function (line) {
+								var number = line.querySelector(LINE_NUMBER_SELECTOR).innerHTML;
+								var name = line.querySelector(LINE_TITLE_SELECTOR).innerHTML;
 
-				return new _Line2.default(name, number, line.href);
-			});
-			this._repository.save(lines);
+								return new _Line2.default(name, number, line.href);
+							});
+							_context4.next = 3;
+							return regeneratorRuntime.awrap(this._repository.save(lines));
+
+						case 3:
+						case 'end':
+							return _context4.stop();
+					}
+				}
+			}, null, this);
 		}
 	}]);
 
